@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Height Velocity Calculator</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <div id="titleSection"><h2>Height Velocity Calculator</h2></div>
+        <button class="closedButton" onclick="toggleInfoBar()">
+            More Info <span id="toggleIcon"><svg style="width: 20px; height: 7px; padding-left: 5px;" viewBox="0 0 12 8"><polygon points="1.4,7.4 0,6 6,0 12,6 10.6,7.4 6,2.8" fill="black"></polygon></svg></span>
+        </button>
+        
+        <div id="infoBar" style="display: none;">
+                <ul>
+                    <li>Measure standing height with a stadiometer and record to the nearest 0.1cm. No shoes, arms relaxed, faces positioned with outer canthus and upper ear aligned horizontally.</li>
+                    <li>Take two measurements approximately one year apart, most accurate between 11-13 months.</li>
+                    <li>Height velocity = difference in height divided by difference in age</li>
+                    <li>Midage is the midpoint between two measurement dates</li>
+                    <li>Height velocity is the most sensitivie measure for growth abnormalities during all types of chronic illness
+                    <li>During puberty, peak height velocity is 6-12 cm/year in males, and 5-10 cm/year in females. The age of peak height velocity varies significantly</li>
+                    <li>Any child over 2 years old with less than 4 cm/year height velocity is a sign of needing more close monitoring and possibly investigation (95% of children grow faster than this) </li>
+                    <li>This calculator uses the Kelly data from 2014 for average maturing children, which from a diverse, healthy, and large cohort of 5-19 year olds. The measurement intervals were 11-13 months.<a href="https://pubmed.ncbi.nlm.nih.gov/24601728/" target="_blank">[1]</a></li>
+                    <li>The midpoint age data has intervals of 0.25 years. If the midpoint age is not within 0.05 of a reference data point then the calculator uses cubic interpolation</li>
+                    <li>Unlike weight and height centile curves, a child is not likely to "track" along a given percentile for HV</li>
+                </ul>
+        </div>
+        <div id="errorSection"></div>
+        <section>
+            <label for="DOB">Date of Birth:</label>
+            <input type="date" id="DOB" placeholder="Enter date of birth">
+        </section>
+
+        <section id="gender-section"> 
+            <label for="male"><input name="gender" type="radio" value="male" id="male">Boy</label>
+            <label for="female"><input name="gender" type="radio" value="female" id="female">Girl</label>
+        </section>
+
+        <section>
+        <label for="firstHeight">First Height (cm):</label>
+        <input type="number" id="firstHeight" placeholder="Enter first height">
+
+        <label for="firstDate">First Measurement Date:</label>
+        <input type="date" id="firstDate" placeholder="Enter first measurement date">
+        </section>
+
+        <section>
+        <label for="secondHeight">Second Height (cm):</label>
+        <input type="number" id="secondHeight" placeholder="Enter second height">
+        
+        <label for="secondDate">Second Measurement Date:</label>
+        <input type="date" id="secondDate" placeholder="Enter second measurement date">
+        </section>
+
+        <button id="calculateButton">Calculate</button>
+        <div id="result"></div>
+
+
+        <section class="resultSection">
+            <div id="alert"></div>
+    
+            <div class="resultSection-row">
+                <div class="resultSection-title">Age</div>
+                <div id="result-age" class="resultSection-result"></div>
+            </div>
+    
+            <div class="resultSection-row">
+                <div class="resultSection-title">Age at First Date</div>
+                <div id="result-agefirstdate" class="resultSection-result"></div>
+            </div>
+    
+    
+            <div class="resultSection-row">
+                <div class="resultSection-title">Age at Second Date</div>
+                <div id="result-ageseconddate" class="resultSection-result"></div>
+            </div>
+
+            <div class="resultSection-row">
+                <div class="resultSection-title">Age Difference</div>
+                <div id="result-agedifference" class="resultSection-result"></div>
+            </div>
+                   
+            <div class="resultSection-row">
+                <div class="resultSection-title">Midpoint Age</div>
+                <div id="result-midpointage" class="resultSection-result"></div>
+            </div>
+    
+    
+            <div class="resultSection-row">
+                <div class="resultSection-title">Annualised Height Velocity</div>
+                <div id="result-hv" class="resultSection-result"></div>
+                </div>
+    
+            <div class="resultSection-row">
+                <div class="resultSection-title">Midpoint Age Z-Score</div>
+                <div id="result-hvzscore" class="resultSection-result"></div>
+            </div>
+    
+    
+            <div class="resultSection-row">
+                <div class="resultSection-title">Midpoint Age Centile</div>
+                <div id="result-hvcentile" class="resultSection-result"></div>
+            </div>
+    
+    
+        </section>
+
+        <div class="source__section">
+            <div>Calculator coded by Jeremy Steinberg, <a href="https://www.jackofallorgans.com/contact" target="_blank" rel="noopener noreferrer">contact</a> for suggestions</div>
+        </div>
+    
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+</body>
+</html>
